@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <link href="../src/MouseTips.css" rel="stylesheet" />
+    <script src="../src/MouseTips.js"></script>
+    <style>
+        html,body,#map{
+            margin:0px;
+            margin:0px;
+            height:100%;
+            width:100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="checkbox" id="cbkIsShow" checked="true" onchange="toggleControl(event)" /> 是否显示
+        <input type="button" id="btnShowMessage" value="显示提示信息" onclick="showMessage()">
+        <input type="text" id="txtMessage" >
+        <input type="button" id="btnSetMessage" value="设置显示信息" onclick="setMessage()">
+    </div>
+    <div id="map">
+    </div>
+    <script type="text/javascript">
+        //定义地图
+        var map = L.map('map').setView([51.505, -0.09], 13);
+        //添加底图
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        //创建鼠标提示控件
+        var mouseTips = L.control.mouseTips({
+            show: true
+        }).addTo(map);
+
+        /**
+         * 监听复选框change事件,显示/隐藏鼠标提示信息
+         * 
+         */
+        function toggleControl(event) {
+            if(event.target.checked){
+                mouseTips.show();
+            }else{
+                mouseTips.hide();
+            }
+        }
+
+        /**
+         * 获取提示信息
+         */ 
+        function showMessage(){
+            alert(mouseTips.getMessage());
+        }
+
+        /**
+         * 设置提示信息
+         */ 
+        function setMessage(){
+            mouseTips.setMessage(document.getElementById('txtMessage').value);
+        }
+
+
+    </script>
+</body>
+
+</html>
