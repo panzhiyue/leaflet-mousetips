@@ -1,6 +1,6 @@
 # leaflet-mousetips
 
-leaflet-mousetips是一个简单的跟随鼠标提示信息控件，您可以将其放入地图中。当鼠标在地图上移动时，它会在鼠标右侧显示提示信息。[demo](http://examples.panzhiyue.website/leaflet/mousetips/index.html)
+leaflet-mousetips是一个简单的跟随鼠标提示信息控件，您可以将其放入地图中。当鼠标在地图上移动时，它会在鼠标右侧显示提示信息。[demo](http://examples.panzhiyue.website/leaflet/mousetips/example/index.html)
 
 ## 效果图
 
